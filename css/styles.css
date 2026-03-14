@@ -1643,4 +1643,16 @@ min-height: var(--real100vh, 100vh);
     animation: none !important;
     transition: none !important;
   }
+@media (max-width: 860px) {
+  .top-ribbon,
+  .identity-strip,
+  .main-nav {
+    display: none;
+  }
+
+  .hero-front-video {
+    margin-top: 0;
+    height: var(--real100vh, 100vh);
+    min-height: var(--real100vh, 100vh);
+  }
 }
