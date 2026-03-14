@@ -379,23 +379,28 @@ textarea {
   box-shadow: var(--shadow-soft);
 }
 
-/* Front video hero */
 .hero-front-video {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  min-height: 100svh;
-  height: 100vh;
-  height: 100svh;
+  height: var(--real100vh, 100vh);
+  min-height: var(--real100vh, 100vh);
   overflow: hidden;
   background: #2b0818;
 }
 
 .front-video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center center;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .hero-front-video {
+    min-height: -webkit-fill-available;
+  }
 }
 
 .hero-front-overlay {
