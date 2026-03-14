@@ -6,6 +6,22 @@ document.addEventListener("DOMContentLoaded", () => {
   loadAnnouncements();
   setupContactForm();
 });
+document.addEventListener("DOMContentLoaded", () => {
+  setRealViewportHeight();
+  window.addEventListener("resize", setRealViewportHeight);
+  window.addEventListener("orientationchange", setRealViewportHeight);
+
+  setupMobileMenu();
+  setupActiveNavigation();
+  setupSmoothScroll();
+  setupRevealAnimations();
+  loadAnnouncements();
+  setupContactForm();
+});
+
+function setRealViewportHeight() {
+  document.documentElement.style.setProperty("--real100vh", `${window.innerHeight}px`);
+}
 
 function setupMobileMenu() {
   const navToggle = document.getElementById("navToggle");
