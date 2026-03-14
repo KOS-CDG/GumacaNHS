@@ -1,8 +1,11 @@
-document.addEventListener("DOMContentLoaded", () => {
-  setRealViewportHeight();
-  window.addEventListener("resize", setRealViewportHeight);
-  window.addEventListener("orientationchange", setRealViewportHeight);
+let viewportHeightFrame = null;
 
+document.addEventListener("DOMContentLoaded", () => {
+  updateViewportHeight();
+  window.addEventListener("resize", queueViewportHeightUpdate);
+  window.addEventListener("orientationchange", queueViewportHeightUpdate);
+
+  setupHeroVideo();
   setupMobileMenu();
   setupActiveNavigation();
   setupSmoothScroll();
@@ -11,8 +14,46 @@ document.addEventListener("DOMContentLoaded", () => {
   setupContactForm();
 });
 
-function setRealViewportHeight() {
+function queueViewportHeightUpdate() {
+  if (viewportHeightFrame) cancelAnimationFrame(viewportHeightFrame);
+  viewportHeightFrame = requestAnimationFrame(() => {
+    updateViewportHeight();
+    viewportHeightFrame = null;
+  });
+}
+
+function updateViewportHeight() {
   document.documentElement.style.setProperty("--real100vh", `${window.innerHeight}px`);
+}
+
+function setupHeroVideo() {
+  const video = document.querySelector(".front-video");
+  if (!video) return;
+
+  video.preload = "metadata";
+  video.muted = true;
+  video.playsInline = true;
+
+  const tryPlay = () => {
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(() => {});
+    }
+  };
+
+  if (video.readyState >= 2) {
+    tryPlay();
+  } else {
+    video.addEventListener("loadeddata", tryPlay, { once: true });
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      video.pause();
+    } else {
+      tryPlay();
+    }
+  });
 }
 
 function setupMobileMenu() {
@@ -90,7 +131,6 @@ function setupSmoothScroll() {
 
 function setupRevealAnimations() {
   const revealElements = document.querySelectorAll(".reveal");
-
   if (!revealElements.length) return;
 
   const observer = new IntersectionObserver(
@@ -102,9 +142,7 @@ function setupRevealAnimations() {
         }
       });
     },
-    {
-      threshold: 0.14
-    }
+    { threshold: 0.14 }
   );
 
   revealElements.forEach((element) => observer.observe(element));
@@ -171,7 +209,6 @@ async function loadAnnouncements() {
 
 function observeDynamicRevealItems() {
   const dynamicRevealItems = document.querySelectorAll(".announcement-card.reveal:not(.visible)");
-
   if (!dynamicRevealItems.length) return;
 
   const observer = new IntersectionObserver(
@@ -183,9 +220,7 @@ function observeDynamicRevealItems() {
         }
       });
     },
-    {
-      threshold: 0.14
-    }
+    { threshold: 0.14 }
   );
 
   dynamicRevealItems.forEach((item) => observer.observe(item));
@@ -237,7 +272,6 @@ function setupContactForm() {
         if (result.errors) {
           displayFormErrors(form, result.errors);
         }
-
         throw new Error(result.message || "Message submission failed.");
       }
 
@@ -263,7 +297,7 @@ function validateContactPayload(payload) {
     errors.name = "Please enter your full name.";
   }
 
-  if (!payload.email || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(payload.email)) {
+  if (!payload.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
     errors.email = "Please enter a valid email address.";
   }
 
@@ -329,15 +363,13 @@ function formatDate(dateString) {
 }
 
 function escapeHtml(value) {
-  return String(value).replace(/[&<>\"']/g, (char) => {
-    const map = {
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      "\"": "&quot;",
-      "'": "&#039;"
-    };
+  const map = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  };
 
-    return map[char];
-  });
+  return String(value).replace(/[&<>"']/g, (char) => map[char]);
 }
