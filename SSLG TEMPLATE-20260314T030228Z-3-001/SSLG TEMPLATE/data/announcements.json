@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Official SSLG General Assembly for Student Leaders",
+    "date": "2026-03-18",
+    "category": "Leadership",
+    "summary": "All class officers, club presidents, and committee heads are requested to attend the SSLG General Assembly for updates on leadership priorities, organizational protocols, and school-wide activity coordination."
+  },
+  {
+    "id": 2,
+    "title": "Campus Clean and Green Initiative Launch",
+    "date": "2026-03-22",
+    "category": "Environment",
+    "summary": "The SSLG will formally launch its school-based Clean and Green Initiative to strengthen learner participation in campus cleanliness, waste segregation, and shared responsibility for the school environment."
+  },
+  {
+    "id": 3,
+    "title": "Learner Welfare and Peer Support Week",
+    "date": "2026-03-27",
+    "category": "Student Welfare",
+    "summary": "A coordinated week of learner-centered activities will be conducted to promote school belonging, student well-being, respectful interaction, and peer support across grade levels."
+  },
+  {
+    "id": 4,
+    "title": "Call for Student Organization Project Proposals",
+    "date": "2026-04-02",
+    "category": "Programs",
+    "summary": "Recognized student organizations are invited to submit project proposals aligned with leadership development, academic support, school values formation, outreach, and inclusive campus participation."
+  },
+  {
+    "id": 5,
+    "title": "Official Advisory on Leadership Orientation",
+    "date": "2026-04-09",
+    "category": "Advisory",
+    "summary": "Incoming and newly designated student leaders will participate in an orientation on SSLG procedures, official communication, event planning standards, and leadership responsibilities."
+  },
+  {
+    "id": 6,
+    "title": "School Pride and Values Campaign Opening",
+    "date": "2026-04-15",
+    "category": "Campaign",
+    "summary": "The SSLG will begin a values and school pride campaign highlighting respect, discipline, participation, and responsible conduct through class-based information drives and visibility materials."
+  }
+]
