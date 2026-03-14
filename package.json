@@ -1,0 +1,23 @@
+{
+  "name": "gnhs-sslg-portal",
+  "version": "1.0.0",
+  "description": "Premium multi-page SSLG institutional website for Gumaca National High School using Node.js, Express, HTML, CSS, and Vanilla JavaScript",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "sslg",
+    "gnhs",
+    "school-government",
+    "express",
+    "vanilla-js",
+    "responsive-website"
+  ],
+  "author": "Perplexity",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
