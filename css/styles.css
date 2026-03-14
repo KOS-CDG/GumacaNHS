@@ -1656,23 +1656,7 @@ textarea {
     padding: 0.85rem 0.9rem;
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-  }
   .site-header {
-  position: relative;
-  z-index: 300;
-}
-.site-header {
   position: relative;
   z-index: 300;
 }
@@ -1718,5 +1702,15 @@ textarea {
     min-height: 92px;
   }
 }
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
