@@ -1672,5 +1672,51 @@ textarea {
   position: relative;
   z-index: 300;
 }
+.site-header {
+  position: relative;
+  z-index: 300;
+}
+
+.site-banner {
+  position: relative;
+  width: 100%;
+  min-height: 210px;
+  background: url("../assets/header-banner.jpg") center / cover no-repeat;
+  border-bottom: 1px solid rgba(77, 13, 38, 0.18);
+}
+
+.site-banner-overlay {
+  min-height: inherit;
+  background: linear-gradient(180deg, rgba(77, 13, 38, 0.12), rgba(77, 13, 38, 0.2));
+}
+
+.site-banner-inner {
+  min-height: 210px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 860px) {
+  .site-banner {
+    min-height: 92px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .site-banner-overlay,
+  .site-banner-inner {
+    min-height: 92px;
+  }
+}
 
 }
