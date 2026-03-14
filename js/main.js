@@ -1,12 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  setupMobileMenu();
-  setupActiveNavigation();
-  setupSmoothScroll();
-  setupRevealAnimations();
-  loadAnnouncements();
-  setupContactForm();
-});
-document.addEventListener("DOMContentLoaded", () => {
   setRealViewportHeight();
   window.addEventListener("resize", setRealViewportHeight);
   window.addEventListener("orientationchange", setRealViewportHeight);
@@ -67,6 +59,7 @@ function setupActiveNavigation() {
     activeLink.classList.add("active");
   }
 }
+
 function setupSmoothScroll() {
   const scrollLinks = document.querySelectorAll("[data-scroll]");
 
@@ -270,7 +263,7 @@ function validateContactPayload(payload) {
     errors.name = "Please enter your full name.";
   }
 
-  if (!payload.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+  if (!payload.email || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(payload.email)) {
     errors.email = "Please enter a valid email address.";
   }
 
@@ -336,7 +329,7 @@ function formatDate(dateString) {
 }
 
 function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g, (char) => {
+  return String(value).replace(/[&<>\"']/g, (char) => {
     const map = {
       "&": "&amp;",
       "<": "&lt;",
@@ -348,5 +341,3 @@ function escapeHtml(value) {
     return map[char];
   });
 }
-
-
