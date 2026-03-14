@@ -16,6 +16,7 @@
     />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
+
   <body data-page="home">
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
@@ -92,28 +93,29 @@
           </div>
         </div>
       </nav>
+    </header>
 
-      <section class="hero-front-video" aria-label="Homepage feature video">
-        <video
-          class="front-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          poster="assets/banner-bg.jpg"
-        >
-          <source src="assets/hero-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+    <section class="hero-front-video" aria-label="Homepage feature video">
+      <video
+        class="front-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        defaultMuted
+        preload="metadata"
+        poster="assets/banner-bg.jpg"
+      >
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-        <div class="hero-front-overlay">
-          <div class="hero-video-badge">
-            
-          </div>
-        </div>
-      </section>
+      <div class="hero-front-overlay">
+        <div class="hero-video-badge"></div>
+      </div>
+    </section>
 
+    <main id="main-content">
       <section class="section section-light hero-info-section" id="home-highlights">
         <div class="container hero-info-layout">
           <div class="hero-info-copy reveal">
@@ -144,9 +146,7 @@
           </aside>
         </div>
       </section>
-    </header>
 
-    <main id="main-content">
       <section class="section section-light" id="home-highlights-content">
         <div class="container">
           <div class="section-header centered">
