@@ -1293,6 +1293,11 @@ textarea {
     --nav-height: 70px;
   }
 
+  .top-ribbon,
+  .identity-strip {
+    display: none;
+  }
+
   .top-ribbon-inner {
     grid-template-columns: 1fr;
     text-align: center;
@@ -1309,11 +1314,21 @@ textarea {
     gap: 0.2rem;
   }
 
+  .main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    min-height: var(--nav-height);
+  }
+
   .nav-toggle {
     display: inline-block;
   }
 
   .nav-inner {
+    min-height: var(--nav-height);
     justify-content: flex-end;
   }
 
@@ -1333,7 +1348,7 @@ textarea {
     visibility: hidden;
     transform: translateY(-10px);
     pointer-events: none;
-    max-height: calc(100vh - 120px);
+    max-height: calc(var(--real100vh, 100vh) - 120px);
     overflow-y: auto;
     flex-wrap: nowrap;
   }
@@ -1373,8 +1388,18 @@ textarea {
   }
 
   .hero-front-video {
-    height: var(--real100vh, 100vh);
-min-height: var(--real100vh, 100vh);
+    margin-top: var(--nav-height);
+    height: calc(var(--real100vh, 100vh) - var(--nav-height));
+    min-height: calc(var(--real100vh, 100vh) - var(--nav-height));
+  }
+
+  .front-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
   }
 
   .hero-video-badge {
@@ -1643,53 +1668,9 @@ min-height: var(--real100vh, 100vh);
     animation: none !important;
     transition: none !important;
   }
-@media (max-width: 860px) {
-  :root {
-    --nav-height: 70px;
-  }
+  .site-header {
+  position: relative;
+  z-index: 300;
+}
 
-  .top-ribbon,
-  .identity-strip {
-    display: none;
-  }
-
-  .main-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 200;
-    min-height: var(--nav-height);
-  }
-
-  .nav-inner {
-    min-height: var(--nav-height);
-  }
-
-  .hero-front-video {
-    margin-top: var(--nav-height);
-    height: calc(var(--real100vh, 100vh) - var(--nav-height));
-    min-height: calc(var(--real100vh, 100vh) - var(--nav-height));
-  }
-
-  .front-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-  }
-
-  .hero-video-badge {
-    left: 1rem;
-    right: 1rem;
-    bottom: 1rem;
-  }
-
-  .hero-video-badge span {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
 }
